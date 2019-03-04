@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package baz;
+
+import "google/api/annotations.proto";
+
+service HelloService {
+    rpc Intro(IntroRequest) returns (IntroResponse) {
+        option (google.api.http) = {
+            get : "/sayhellobaz"
+        };
+    }
+}
+
+message IntroRequest {
+    string name = 1;
+}
+
+message IntroResponse {
+    string intro = 1;
+}
