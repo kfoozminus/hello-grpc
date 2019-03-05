@@ -1,9 +1,13 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 package foo;
 
 service HelloService {
-    rpc Intro(IntroRequest) returns (IntroResponse) {}
+    rpc Intro(IntroRequest) returns (IntroResponse) {
+        option (google.api.http).get = "/hello";
+    }
     rpc IntroAgain(IntroRequest) returns (IntroResponse) {}
 }
 

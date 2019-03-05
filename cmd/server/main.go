@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/kfoozminus/hello-grpc/cmd/proxy"
 	"log"
 	"net"
 
@@ -33,6 +34,13 @@ func main() {
 
 	s := grpc.NewServer()
 	foo.RegisterHelloServiceServer(s, &helloServiceServer{})
+
+	// Register reflection service on gRPC server.
+	//reflection.Register(s)
+
+	go proxy.Call()
+
+	log.Println("Server running at port :8080")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

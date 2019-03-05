@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultName = "Anonnymous"
+	defaultName = "Annonymous"
 )
 
 func main() {
